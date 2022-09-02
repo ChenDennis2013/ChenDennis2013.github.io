@@ -1,0 +1,20 @@
+<!--千万不要用IDEA的预览-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>猜数字(嘿科技)</title>
+	<script>
+		h = Number(prompt("请输入难度：",""))
+		while (true) {
+			n = Math.floor(Math.random() * h) + 1
+			g = prompt("请输入1~"+h+"的数字","")
+			if (g == n) {
+				alert("对了")
+			} else {
+				alert("错了，正确数字是" + n)
+			}
+		}
+	</script>
+</head>
+</html>
