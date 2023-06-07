@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function f()
+            {
+                var t = document.getElementById("i").value;
+                if (t.charAt(0) != "-")
+                {
+                    document.getElementById("i").value = "-" + document.getElementById("i").value;
+                    t = "-" + t;
+                }
+                document.getElementById("p").innerHTML = "恭喜您领取到了" + t + "个心里种子，快截图发群里吧！";
+            }
+        </script>
+    </head>
+<body>
+    <div align="center">
+        <p>您要领取</p>
+        <input type="number" id="i" display="inline" min="-100" max="100">
+        <p>个心里种子</p>
+        <button onclick="f()">提交</button>
+        <p id="p"></p>
+    </div>
+    
+</body>
+</html>
