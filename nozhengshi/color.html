@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>看字猜颜色</title>
+    <script>
+        var t = 30;
+        var s = 0;
+        var color = ["red", "yellow", "green", "blue", "purple", "black"];
+        var word = ["红", "黄", "绿", "蓝", "紫", "黑"];
+        function cd()
+        {
+            t -= 1;
+            document.getElementById("time").innerHTML = "时间：" + t;
+            if (t <= 0)
+            {
+                document.getElementById("main").style.display = "none";
+                document.getElementById("over").style.display = "inline";
+                document.getElementById("score").innerHTML = "恭喜您，获得" + s + "分";
+            }
+        }
+        function setup()
+        {
+            document.getElementById("setup").style.display = "none";
+            document.getElementById("main").style.display = "inline";
+            rf();
+            var timer = setInterval(cd, 1000)
+        }
+        function rf()
+        {
+            var a = Math.floor(Math.random() * 6);
+            var b = Math.floor(Math.random() * 6);
+            var it = document.getElementById("guess");
+            document.getElementById("sc").innerHTML = "分数：" + s;
+            it.style.color = color[a];
+            it.innerHTML = word[b];
+        }
+        function red()
+        {
+            var c = document.getElementById("guess").style.color;
+            if (c == "red")
+                s ++;
+            else
+                s --;
+            rf();
+        }
+        function yellow()
+        {
+            var c = document.getElementById("guess").style.color;
+            if (c == "yellow")
+                s ++;
+            else
+                s --;
+            rf();
+        }
+        function green()
+        {
+            var c = document.getElementById("guess").style.color;
+            if (c == "green")
+                s ++;
+            else
+                s --;
+            rf();
+        }
+        function blue()
+        {
+            var c = document.getElementById("guess").style.color;
+            if (c == "blue")
+                s ++;
+            else
+                s --;
+            rf();
+        }
+        function purple()
+        {
+            var c = document.getElementById("guess").style.color;
+            if (c == "purple")
+                s ++;
+            else
+                s --;
+            rf();
+        }
+        function black()
+        {
+            var c = document.getElementById("guess").style.color;
+            if (c == "black")
+                s ++;
+            else
+                s --;
+            rf();
+        }
+    </script>
+    <style>
+        button
+        {
+            height: 30;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div align="center">
+        <p style="height: 30px;"></p>
+        <button id="setup" onclick="setup()">开始游戏</button>
+        <div id="main" style="display: none;">
+            <p id="time">时间：30</p>
+            <p id="sc">分数：0</p>
+            <p id="guess" style="font-size: 50px;"></p>
+            <div style="display: inline;">
+                <button onclick="red()">红</button>
+                <button onclick="yellow()">黄</button>
+                <button onclick="green()">绿</button>
+            </div>
+            <p></p>
+            <div style="display: inline;">
+                <button onclick="blue()">蓝</button>
+                <button onclick="purple()">紫</button>
+                <button onclick="black()">黑</button>
+            </div>
+        </div>
+        <div id="over" style="display: none;">
+            <p id="score"></p>
+            <a href="javascript:location.reload();">再来一局</a>
+        </div>
+    </div>
+</body>
+</html>
