@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+    <title>反应力测试</title>
+    <script>
+        var t = 0;
+        var int;
+        function chan()
+        {
+            document.getElementById("mb").style.color = "red";
+            document.getElementById("mb").onclick = suc;
+            int = self.setInterval(function(){t ++}, 1);
+        }
+        function start()
+        {
+            document.getElementById("start").style.display = "none";
+            document.getElementById("main").style.display = "inline";
+            setTimeout(chan, Math.floor(Math.random() * 4001) + 1000);
+        }
+        function fail()
+        {
+            int = window.clearInterval(int);
+            document.getElementById("main").style.display = "none";
+            document.getElementById("fail").style.display = "inline";
+        }
+        function suc()
+        {
+            int = window.clearInterval(int);
+            document.getElementById("main").style.display = "none";
+            document.getElementById("suc").style.display = "inline";
+            document.getElementById("suct").innerHTML = "恭喜您，您的反应力是" + t / 1000 + "秒";
+        }
+    </script>
+    <style>
+        button
+        {
+            height:20mm;
+            font-size:15mm;
+        }
+        p
+        {
+            font-size:20mm;
+        }
+    </style>
+</head>
+<body>
+<div align="center">
+    <button id="start" onclick="start()">开始！</button>
+    <div id="main" style="display:none">
+        <button id="mb" onclick="fail()">等待字体变红按下按钮</button>
+    </div>
+    <div id="suc" style="display:none">
+        <p id="suct"></p>
+        <button onclick="location.reload()">再来一次</button>
+    </div>
+    <div id="fail" style="display:none">
+        <p>啊哦，失败了，再试一次吧</p>
+        <button onclick="location.reload()">再来一次</button>
+    </div>
+</div>
+</body>
