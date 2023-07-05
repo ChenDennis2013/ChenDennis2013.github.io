@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+    <title>点击游戏</title>
+    <script>
+        var c = 1;
+        var t = 5000;
+        var int;
+        function click()
+        {
+            c ++;
+        }
+        function upd()
+        {
+            t -= 1;
+            document.getElementById("time").innerHTML = "还剩" + Math.floor(t / 1000) + "." + Math.floor(t % 1000 / 100) + Math.floor(t % 100 / 10) + t % 10 + "秒，您已经点击了" + c + "次";
+            if (t <= 0)
+            {
+                int = window.clearInterval(int);
+                document.getElementById("game").style.display = "none";
+                document.getElementById("txt").innerHTML = "恭喜您，在5秒内点击了" + c + "次";
+                document.getElementById("over").style.display = "inline";
+            }
+        }
+        function start()
+        {
+            document.getElementById("main").onclick = click;
+            int = self.setInterval(upd, 1);
+        }
+    </script>
+    <style>
+        button
+        {
+            height:20mm;
+            font-size:12mm;
+        }
+        p
+        {
+            font-size:20mm;
+        }
+    </style>
+</head>
+<body>
+<div align="center">
+    <div id="game">
+        <p id="time">还剩5.000秒,您已经点击了0次</p>
+        <button id="main" onclick="start()">快速点击我!</button>
+    </div>
+    <div id="over" style="display:none">
+        <p id="txt"></p>
+        <br><br><br><br><br>
+        <button onclick="location.reload()">再来一次</button>
+    </div>
+</div>
+</body>
